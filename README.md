@@ -19,6 +19,8 @@ You may hit [R1] key to < LoadExecPS2("cdrom0:\\3_STARS.EXE;1", 0, 0) >.
 
 You may hit [L2] key to < j 0xA0000 >.
 
+[PS2 disAsm 2001] A computer program to disassemble .ELF file for PS2 CPU (R5900).
+
 [mini Game Hacker] Use gamepad to edit the memory address to do a heximal data dump (show) on PS2 screen, this is useful to examine memory contents when a program/game halted or died.
 
 
