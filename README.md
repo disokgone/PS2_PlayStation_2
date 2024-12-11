@@ -1,6 +1,27 @@
 # PS2_PlayStation_2
 some programs for PlayStation 2 (needs some program files from in ps2dev, gcc ..)
 
+Most of the programs needs [psexe.com] to transmit the data and executive files to PS2 via a PL2301 or PL2302 cable which worked with USB ports of PS2 and computer.
+I preserved some .o (object) files because you may not have a complete compiler system to rebuild it.
+Some .REM files were remark text used in my MIPS R3000/R5000 disassembler.
+
+[8x8 Font Test]  Try to show DOS 8x12 font to PS2 screen.
+
+[Graph Test] Heximal dump from 0x420000 (length = 0x1000) to PS2 screen.
+
+[MemCard Test] Simple test exist or not of PS2 memory card and print result in text to computer.
+
+[MyFont Test] Chinese 16x15 and 24x24 font test, you can change font size by press [SELECT] key.
+
+You may hit [L1] key to < LoadExecPS2("cdrom0:\\NAPLINK.ELF;1", 0, 0) >.
+
+You may hit [R1] key to < LoadExecPS2("cdrom0:\\3_STARS.EXE;1", 0, 0) >.
+
+You may hit [L2] key to < j 0xA0000 >.
+
+[mini Game Hacker] Use gamepad to edit the memory address to do a heximal data dump (show) on PS2 screen, this is useful to examine memory contents when a program/game halted or died.
+
+
 There were some infomations (file date/time/size) about the files to build correct ELF file to execute on a PS2 machine.
 (I may change or add new items below in the future...)
 
