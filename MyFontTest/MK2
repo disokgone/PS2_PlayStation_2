@@ -1,0 +1,63 @@
+######################################################################
+# to add files, simply add the c file to 'SOURCES',
+# and the o file it'll become to 'OFILES'
+# !! Bugs !! MAKE.EXE 對某些特定的檔名會無法讀取, 如 "myp1.c",
+#	若發現無法讀取時, 請改檔名吧 ! (必須全為小寫)
+
+HEADERS =	gr_1.h	hw.h
+
+SOURCES =	scrt0.s loadmodule.c myps2.c g2.c gs.c ipad.c nuputs.c pad.c etifont.c \
+		sc_cdrom.c except.c except1.s myf1.s \
+		0dma.s ygs1.s 0pix1.s 1scrn1.s ysyscall.s vrhw0.s
+		
+OFILES =	scrt0.o loadmodule.o myps2.o g2.o gs.o ipad.o nuputs.o pad.o etifont.o \
+		sc_cdrom.o except.o except1.o myf1.o \
+		0dma.o ygs1.o 0pix1.o 1scrn1.o ysyscall.o vrhw0.o
+
+TARGET = myps2
+######################################################################
+# Application names
+CC = ee-gcc
+LD = ee-ld
+AS = ee-as
+STRIP = ee-strip
+
+DEFINES += -DROM_PADMAN -DPS2_EE
+######################################################################
+# Paths and flags
+GCCDIR = C:/PS2DEV/GCC
+
+INCDIR = -I.  -I$(GCCDIR)/myinc  -I$(GCCDIR)/ee/lib/gcc-lib/mips64r5900-sce-elf/2.9-ee-991111b/include	\
+		-I$(GCCDIR)/ee/include	-I$(GCCDIR)/iop/include  -I$(GCCDIR)/myinc/FROM_TUT
+
+LIBDIR = -L.  -L$(GCCDIR)/ee/lib  -L$(GCCDIR)/iop/lib -L$(GCCDIR)/ee/lib/gcc-lib/mips64r5900-sce-elf/2.9-ee-991111b
+
+ASFLAGS = -mcpu=5900 -EL -am
+CFLAGS = $(INCDIR) $(DEFINES) \
+		-mips3 -mcpu=r5900 -ffreestanding -fnonnull-objects \
+		-fno-builtin -fshort-double -mno-memcpy -nostartfiles \
+		-nodefaultlibs -mlong64 -mhard-float -mno-abicalls -O3 \
+		-EL -Wall
+LDFLAGS = -m elf32l5900 -Tlinkfile.lcf
+
+# !! Bugs !! MAKE.EXE 若發現無法連結到某個應存在的標準函數時, 如 "memset",
+#	請改變下列的 -lc -lgcc -lkernel 的順序吧 !
+
+LOCAL_LIBS = -lkernel -lc -lgcc
+
+######################################################################
+# 如欲產生 myps2.asm, 則請把下兩行的註解去除即可 !
+#$(TARGET).asm: $(TARGET).c
+#	 $(CC) -S $(CFLAGS) $< -o $@
+
+$(TARGET).elf: $(OFILES)
+		$(LD) $(LIBDIR) -o $(TARGET).elf $(LDFLAGS) $(OFILES) $(LOCAL_LIBS)
+#		$(STRIP) --strip-all $(TARGET).elf
+
+%.o: %.s
+		$(AS) $(ASFLAGS) $< -o $@
+
+%.o: %.c $(HEADERS)
+		$(CC) -c $(CFLAGS) $< -o $@
+
+
