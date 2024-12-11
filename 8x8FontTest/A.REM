@@ -1,0 +1,38 @@
+$00000000:, , , , _DYNAMIC_LINK, globVar, EXPORT_AR2
+$000C0000:
+$000C0E68:loadRunELF_Program
+$00100558:drawFrame
+$00107098:messageBox3
+$00109130:, gcc2_compiled., __gnu_compiled_c, waitPad, _ftext
+$001091A8:doDump
+$00109454:drawBitMap
+$00109480:_etext
+$00109700:, _fdata, x
+$00109704:xlen
+$00109708:dumploc
+$0010970C:dumpmode
+$00109710:pkt
+$00109714:ctrl
+$00109718:eg01
+$00109728:eg02
+$00109734:eg03
+$0010973C:eg04
+$00109754:fn1
+$00109764:fn2
+$00109774:fn3
+$0010978C:mess1
+$001097A0:__bss_start, _edata, _fbss
+$0010E998:Ar2Sys
+$0010E9E0:readPad
+$00110088:beginPacket
+$00111790:_gp
+$001144D8:__drawBitMap
+$0011C8A8:sceCdDiskReady
+$0011C8C8:sceCdSearchFile
+$0011EFA0:fillchar
+$0011F0F8:ustrcpy
+$0011F130:ustrlen
+$0011F160:ustrncpy
+$0011F280:sprintf
+$001211D0:, malloc, _end
+$A0020000:

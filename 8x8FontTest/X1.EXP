@@ -1,0 +1,2 @@
+int waitQad2(int last);
+#define	waitQad2	0x101450
