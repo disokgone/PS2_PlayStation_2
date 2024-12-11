@@ -7,6 +7,8 @@ Some .REM files were remark text used in my MIPS R3000/R5000 disassembler.
 
 [8x8 Font Test]  Try to show DOS 8x12 font to PS2 screen.
 
+[GameSaveFor_PS2MC\BISLPM-62005XXXXXXXX] Some files downloaded from a PS2 memory card for use in PS2MC project below. (OpenGL was used to show 3D animation images.)
+
 [Graph Test] Heximal dump from 0x420000 (length = 0x1000) to PS2 screen.
 
 [MemCard Test] Simple test exist or not of PS2 memory card and print result in text to computer.
@@ -20,6 +22,14 @@ You may hit [R1] key to < LoadExecPS2("cdrom0:\\3_STARS.EXE;1", 0, 0) >.
 You may hit [L2] key to < j 0xA0000 >.
 
 [PS2 disAsm 2001] A computer program to disassemble .ELF file for PS2 CPU (R5900).
+
+[PS2MC] Please run MyUSB.exe to perform USB upload/download game data access on PS2.
+
+MyUSB.exe uses USBIO library. Need to pay for comercial use !
+
+** USBIO is a good tool to help us to access USB devices. You can reach the company for more information here:
+
+https://www.thesycon.de/eng/company_overview.shtml
 
 [mini Game Hacker] Use gamepad to edit the memory address to do a heximal data dump (show) on PS2 screen, this is useful to examine memory contents when a program/game halted or died.
 
