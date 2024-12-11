@@ -1,0 +1,35 @@
+--------------- from GS1.S ---------------
+
+# 1. 首先應先清除未使用空間 (.sbss  及 .bss) --> 可略過
+	la	$v0, _fbss		# Front of .bss (或 __bss_start)
+	addiu	$v0, $v0, 15
+	subiu	$v1, $zero, 16		# $v1 = 0xFFFFFFF0
+	and	$v0, $v0, $v1		# 確定 $v0 與 16 bytes 切齊
+	la	$v1, _end		# end addr. of .sbss & .bss
+lpClr00:
+	nop
+	nop
+	.word	0x7C400000		# =>	s16	$zero, 0($v0) 填入 16 個 0 !!
+	sltu	$t0, $v0, $v1
+	bne	$t0, $zero, lpClr00	# 清除未載入程式的區域 (.sbss 及 .bss)
+	addiu	$v0, $v0, 0x10
+
+# 2. 執行 RFU060(gp_addr, gpsize, ?size=0x80000, .bss_begin, Thread 例外處置位址)
+	la	$gp, _gp
+	move	$a0, $gp
+	li	$a1, 0xFFFF		# 規定 gp 空間不能高於 64 KBytes
+	li	$a2, 0x80000		# 或 0x100000 亦可
+	la	$a3, _fbss		# end of data (即是 .sbss/.bss 的起點)
+	la	$t0, _HandleThreadExc	# 又稱為 _root (大多重新啟動)
+	jal	RFU060
+	nop
+
+	addu	$sp, $v0, $zero
+	la	$a0, _end	# sp 最頂端位址
+	li	$a1, 0xFFFF	# sp 大小 (< 64KB)
+	jal	RFU061		# 設定 sp 位址, 及其大小 (< 64KB)
+	nop
+#	jal	some-init	# 通常是設立 Thread, Sema ...
+#	nop
+
+--------------- end GS1.S ---------------

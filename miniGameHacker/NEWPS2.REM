@@ -1,0 +1,667 @@
+$000C0000:字串整合(*a0, *a1, *a2);
+$000C0058:讀取並處理 SYSTEM.CNF
+$000C007C:讀到 $1734F8
+$000C0084:a0 = sp;  a1 = '\SYSTEM.CNF;1';
+$000C009C:a0 = 'cdrom0:\SYSTEM.CNF;1'
+$000C01E0:金手指密碼處置 (中斷時)
+$000C05A8:do_master_code: 執行一次便會失效
+$000C0608:*執行緒 ($C0774 設立)
+$000C0630:*執行緒 ($C083C 設立)
+$000C075C:long[$C2050] = long[$C203C]
+$000C0764:[sp+4] = $0C0608;
+$000C0768:[sp+8] = $0C2060; (緒用堆疊)
+$000C082C:[sp+4] = $0C0630;
+$000C0878:? sceSifGetIopAddr21
+$000C08F8:? sceSifGetIopAddr31
+$000C0A10:lf_bind
+$000C0B20:v0 = *(a0);  *(a0) = a1;
+$000C0B30:v0 = *(a0)
+$000C0B38:prepare for ?
+$000C0B3C:$118508, $11CB28 符合置換 sceSifSetReg 指令
+$000C0B48:if (long[$0C3128] == 0) 則不置換 sceSifSetReg (則本程式的函式仍能執行)
+$000C0B60:t2 = 0x0C13C0 (jmp sceSifSetReg)
+$000C0B64:a3 = 0x24030079 = <addiu v1, zero, $0079>
+$000C0B6C:a2 = 0x03E00008 = <jr ra>
+$000C0C28:v1 = *($0C2044)
+$000C0CC8:$118508, $11CB28 符合置換 sceSifSetReg 指令
+$000C0CDC:a3 = 0x24030079 = <addiu v1, zero, $0079>
+$000C0CE0:t1 = 0x0C = <syscall 0>
+$000C0CE4:a2 = 0x03E00008 = <jr ra>
+$000C0CF0:v0 = ulong *($A0100000)
+$000C0D44:填 0, 代表已完成置換
+$000C0D50:int 檢查$80010000的資料
+$000C0D6C:s4 = #0C0B30
+$000C0D74:s3 = #0C0B20
+$000C0D7C:s1 = $80010000
+$000C0DAC:v0 = $8000FC0C (OK)
+$000C0DE0:long FindSCE特定指令(void);
+$000C0E04:s0 = 0xA0000000
+$000C0E08:s3 = 0x3C040008 (= lui a0, 8)
+$000C0E0C:s2 = 0x34842000 (= ori a0, a0, $2000)
+$000C0E10:s1 = 0xA000FFFF (在前 64K 尋找)
+$000C0E38:找到了, 傳回 addr + 8 的位址值
+$000C0E48:找不到, 傳回 0
+$000C0E68:loadRunELF_Program
+$000C0E68:準備玩遊戲(bool loadGameProg, bool killMyFunc); (jalr from $109448)
+$000C0EE0:if OK then v0 = $8000FC0C
+$000C0EF0:讀取 $8000FC28 的資料
+$000C0EF8:開始安裝中斷處理程式, 目標為 jmp $A00C11D8
+$000C0F10:a0 = $A00C11D8 (中斷處理程式進入點)
+$000C0F3C:---- Here: failed checking $80010000 ----
+$000C0F44:a1 = 指令 <lui v1, $0010>
+$000C0F7C:a1 = 0 (Load only)
+$000C0F80:a0 = $174560 (char *LoadFileName)
+$000C0FA0:a0 = 'rom0:PS2LOGO'
+$000C0FA4:[sp] = $174560 = char *LoadFileName
+$000C0FA8:a1 = 1 (Load and Run)
+$000C0FD0:似準備玩遊戲 ! (jalr from $107668)
+$000C10B8:v0 = 'BootBrowser'
+$000C10BC:a0 = 'rom0:OSDSYS'
+$000C10C4:a1 = 1 (Load and Run)
+$000C10E4:FlushCache
+$000C10F4:CreateThread
+$000C1104:StartThread
+$000C1114:RotateThreadReadyQueue
+$000C1124:AddIntcHandler
+$000C1134:EnableIntc
+$000C1150:if (DS.DE == 0) ResetEE
+$000C1168:if (DS.DE == 1) [記憶體錯誤不產生例外]
+$000C1170:_EnableIntc
+$000C1198:LoadExecPS2(char *fileName, int 0=Load, 1=Run, ?* buf);
+$000C11A8:RFU116
+$000C11B8:void sceWriteMemory(ulong addr, ulong data);
+$000C11C8:ulong sceReadMemory(ulong addr);
+$000C11D8:jmp k0=$0C11E8
+$000C11F0:%Cause |= 0x13
+$000C1204:簡易的 FlushCache
+$000C121C:%Cause |= 0x13
+$000C13C8:sceSifSetReg0
+$000C13D8:sceSifSetReg
+$000C1408:void memset(void *dest, char to_fill, int length);
+$000C1428:sceSifSetDma
+$000C1438:isceSifSetDma
+$000C1448:long CreateSema(void *SEMAptr);
+$000C1458:DeleteSema(int SEMA_handle);
+$000C1468:WaitSema
+$000C1478:sceSifGetReg
+$000C1488:可能是拷貝密技密碼
+$000C1528:sceSifWriteBackDCache(void *cacheAddress, long lineLength);
+$000C15E0:sceSifBindRpc
+$000C1700:sceSifCallRpc(void RecvBuf, ?, ?, void SendBuf, t0=lenA, t1=SendBuf, t2=lenB);
+$000C18B8:sceSifCheckStatRpc
+$000C18E8:_sceSifSendCmd
+$000C1A30:sceSifSendCmd
+$000C1A70:_sceRpcGetPacket
+$00100000:StartUp
+$00100008:gp = $173470;
+$0010006C:RFU060
+$0010008C:RFU061
+$00100238:? color
+$001003E8:? draw ?(PACKET *pkt,
+$00100558:drawFrame
+$00100558:畫出外框(PACKET *pkt, int X, int Y, int Xlen, int t0=Ylen, int t1=FillColor);
+$00100850:主畫面右方(PACKET *pkt, void *a1);  // a1 = $16E5B8 (系統變數區)
+$00100950:印出軟體版本為 1.9 版
+$00100954:a1 = 'Version %x.%x'
+$00100978:v1 = Xlen
+$00100980:a1 = X
+$00100988:a2 = byte[s0 + $140] = 0 或 0x7C 或 0x80;
+$00100990:a1 = x + (xlen >> 1);
+$001009A0:a1 = (x + (xlen >> 1)) - ((字串實寬 + 空白之寬) >> 1);
+$001009A4:[sp + 8] = background color ?
+$001009E4:V0 = 'Current Selected Game'
+$00100A00:s2 = 0x0072
+$00100A08:s4 = 0x36B0;
+$00100A40:[sp + 8] = byte[s0 + $140] = 0 或 0x7C 或 0x80;
+$00100A44:[sp + 0]= 0x0072
+$00100A4C:[sp + $10] = 0x36B0;
+$00100BA4:a1 = 'Has %d Code%s'
+$00100C6C:a1 = '%d %s Active'
+$00100CF8:a1 = '%d Game%s Supported'
+$00100D04:a3 = 's';
+$00100D0C:a3 = '';
+$00100E28:a1 = '%d%% Code space free.'
+$00101190:主畫面(PACKET *pkt, );
+$00101540:印出有多少密碼被選用
+$001015BC:s6 = Y = 44
+$001016F8:a1 = 'Has %d Code%s'
+$00101710:a3 = 'Are'
+$00101718:a3 = 'is'
+$00101730:s1 = '%d %s Active'
+$00101798:Y += 10
+$001017C0:a3 = 'Are'
+$001017C8:a3 = 'is'
+$00101AB8:印出該密技含有幾組密碼(a0,a1,a2,a3);
+$00101C84:a2 = 0x40;
+$00101D48:a1 = 'Code Has %d Entr%s';
+$00101D60:a3 = 'ies';
+$00101D68:a3 = 'y';
+$00101DC4:a2 = 0xAA;
+$001021D4:a1 = '%08X  %08X';
+$00102A38:LoadFileChgReg(char *path_fileName);
+$00102B38:分派工作(PACKET *pkt,, ); // pkt = sp + $300;
+$00102E4C:a0 = s3 = PACKET *pkt;
+$00102ED8:跳到 $16A360 起的位址表格
+$00102EE4:秀出主畫面右方的三個框及其內容
+$00103208:畫出網站名稱(
+$00103394:a0 = 'CODEJUNKIES.COM';
+$00103718:畫出二行文字(PACKET *pkt, void *SysVars, char *L1, char *L2);
+$00103A04:xlen = 51 dots
+$00103A08:ylen = 21 dots (特大字)
+$00104400:ulong ByteSwap4(*($121DD0));
+$00104438:金手指處理 ?
+$00105580:? 比較
+$00106258:s4 = 0xDEADFACE (AR2 裝置檢查碼)
+$00106770:!! 檢查有無插入檢查裝置 !!
+$001067C8:a1 = 'HARDWARE  NOT  DETECTED' = $16A478
+$001067D4:a1 = $16A490 = 'Insert Action Replay2 cartridge'
+$00106DE4:long[$C203C] = a0 & 0xFFFFFFFC;
+$00106E18:*[$0C2044] = v1
+$00107044:long[$C203C] = a1 & 0xFFFFFFFC;
+$00107098:MessageBox3(char *L1, char *L2, char *L3);
+$00107098:messageBox3
+$00107100:[Ar2sys + $140] += 2;
+$001071BC:do  {
+$001071E8:} until (press X button);
+$001071F0:[AR2Sys + $140] = 0x7E (已按下 X 鍵)
+$00107250:void *sceCDVD_bind(void); // new func !
+$00107268:do {
+$00107278:self_loop(65536);
+$00107284:a0 = $16C280
+$00107288:a1 = $80000593
+$00107298:傳回值 = 0x16C280;
+$001072A0:當機
+$001072AC:} while (long[$16C2A4] == 0);
+$001072C0:byte AR_readpad3(void);
+$00107310:void AR_readpad5(void);
+$00107324:pad SEMAbuf = $16C280
+$00107668:似準備玩遊戲
+$001078DC:jmp $16A9C0[n]
+$00107A98:jmp $17AA30[n]
+$00107B84:v1 = qword(-1)
+$00107BA0:a1 = $121F68 (字串表陣列)
+$001084B8:long 分派(long arg0);
+$001084C4:s2 = arg0
+$0010904C:func_no --;
+$00109060:$16AC30 = jmp tables
+$0010906C:s2 = arg0 (於 $1084C4 指定)
+$00109070:----- 以下即為 jmp table 的函式群 -----
+$00109074:jmpfunc_01:
+$0010907C:jmpfunc_18: 玩遊戲之前檢查是否用了太多密碼 ( > 100)
+$0010908C:if (密碼數 > 100) show error !
+$001090A4:a0 = 'TOO MANY CODES ON!!'
+$001090A8:a1 = 'Action Replay2 cannot run with this'
+$001090B0:a2 = 'many codes on. Press  X  to continue'
+$001090F4:= 0xFF4F6B88
+$0010910C:a0 = $0C1B88
+$00109130:jmpfunc_19: 玩遊戲
+$00109130:waitPad
+$00109154:s4 = 'or  O  to cancel' = $16AB50
+$00109170:s5 = $16AB18 = 'PLEASE INSERT GAME DISC'
+$00109174:s3 = $16AB30 = 'then press  X  to continue'
+$00109228:傳回值 = v0 = 0x16C280
+$00109240:沒按鍵, 再讀 !
+$00109244:O=0x20, X=0x40
+$001093E0:doDump
+$001093E0:若不是按下 'O' (就是按下 'X') 便到 $109400 去 Loading Game !
+$00109400:Go Play Game !
+$00109418:a2 = 'LOADING' = $16AB68
+$0010941C:a3 = 'Please Wait' = $16AB70
+$00109424:t0 = ''
+$00109448:=> 準備玩遊戲 !
+$00109450:nop !
+$00109458:jmpfunc_03:
+$00109504:jmpfunc_04:
+$001095D8:jmpfunc_05_14:
+$0010968C:jmpfunc_06: 編輯 New Game
+$0010968C:選按 NewGame => 跳到我寫的程式
+$001096A4:a1 = '--- New Game ---';
+$001096D8:jmpfunc_15:
+$00109700:, _fdata, x
+$00109700:jmpfunc_07: 編輯新密碼
+$00109704:xlen
+$00109708:dumploc
+$0010970C:dumpmode
+$00109710:pkt
+$00109714:ctrl
+$00109718:a1 = '--- New ---';
+$00109718:eg01
+$00109728:eg02
+$00109734:eg03
+$0010973C:eg04
+$00109754:fn1
+$00109764:fn2
+$00109774:fn3
+$0010978C:mess1
+$001097A0:__bss_start, _edata, _fbss
+$001097A0:jmpfunc_16:
+$001097EC:jmpfunc_08:
+$00109814:jmpfunc_11:
+$00109828:jmpfunc 返回點
+$001098BC:程式結束
+$0010BB40:? pad
+$0010BBA8:void read_pad_type0(void);
+$0010BC38:void read_pad_type4(void);
+$0010BD18:long check_AR2_left_slot(void *buf, int unknown); (似 $10C060)
+$0010C060:long check_AR2_right_slot(void*buf, int ?); (似 $10BD18)
+$0010CAC0:long AR2_dev_cmdB(int ?);
+$0010CC60:long AR2_dev_cmdA(int ?);
+$0010D3DC:v1 = byte[$16D348];
+$0010D3F4:if ([$16D348] == 0x5A) v0 = 0;  else v0 = -1;
+$0010D584:[$16E5B8 + $140] = 0x80 (or 0);
+$0010D8BC:[$16E5B8 + $140] = 0x7C
+$0010D9F8:--> 檢查有無插入檢查裝置
+$0010DD10:void loadFileOfSceSifAndGs(int deviceNo); // deviceNo : 1 = cdrom0
+$0010DD2C:a1 = 'cdrom0:\SIO2.COD;1';
+$0010DD54:a0 = 'cdrom0:\PHEW.COD;1';
+$0010DD90:main
+$0010DDD4:a0 = '';
+$0010DDDC:開始載入光碟中需用的檔案
+$0010DE08:a0 = 'GFX\BACKSCRL.IMG';
+$0010DE14:a0 = 'GFX\EXTRAS.IMG';
+$0010DE40:a0 = 'GFX\AR_UK_1.IMG';
+$0010DF40:借 8 bytes 當 Packet 起點
+$0010DF4C:s4 = $16E5B8
+$0010DF50:s3 = sp + $300 = PACKET *pkt
+$0010DF54:$16813C = control of 1st Packet !
+$0010DF6C:fp = s2 = 0x170000
+$0010E06C:s3 = sp + $300 = PACKET *pkt
+$0010E070:s2 = sp + $100
+$0010E078:s4 = 0x10090
+$0010E0A8:a1 = $16E5B8
+$0010E194:v0 = 'INITIALISING HARDWARE' = $16AED0
+$0010E198:a1 = 'Please Wait' = $16AEE8
+$0010E1E4:s2 = s4 = $16E5B8
+$0010E37C:s2 = s0 = $16E5B8
+$0010E4C8:, gcc2_compiled., __gnu_compiled_c, myGo, _ftext
+$0010E4C8:重設為工廠預設值
+$0010E670:ExecGame
+$0010E688:a2 = 'RESETTING FACTORY DEFAULTS' = $16ADD0
+$0010E68C:a3 = '' = $16ADF0
+$0010E74C:a1 = 'Factory defaults now set.' = $16AF28
+$0010E808:drawBitMap
+$0010E834:_etext
+$0010E838:int strcmp(char *str1, char *str2);
+$0010E86C:if (strlen(str1) >= strlen(str2)) a1 = strlen(str1);	else a1 = strlen(str2);
+$0010E870:if (兩字串長度俱為零) return(0);
+$0010E998:Ar2Sys
+$0010E998:return(0x16E5B8);
+$0010E9E0:long do_read_pad(int typeSelect);
+$0010E9E0:readPad
+$0010EAE8:return(long $16E900[a0]);
+$0010EB00:return(long $16E900[a0]);
+$0010EB18:sce 載入 a1 指的檔案(int deviceNo, char *fn); // deviceNo: 1 = cdrom0
+$0010EBD8:do_strcpy(src = a0, dest = $168150);
+$0010F0B8:ulong *($16E938[(a0 * 16) + 8])
+$0010F0D0:ulong *($16E938[(a0 * 16) + 12])
+$0010F0E8:*($16E938[(a0 * 16) + 12]) = a1
+$0010F100:*($16E938[(a0 * 16) + 12]) = a1
+$0010FC30:long getCharWidth(byte 欲印的字, long x, long y);
+$0010FC34:v0 = -60
+$0010FC40:s0 = 欲印的單一字元
+$0010FC58:s1 = 0, 此字元的寬度(dot)
+$0010FC60:if (a0 == -60) s0 = 'A';
+$0010FC74:if (a0 == -55) s0 = 'E';
+$0010FCC8:if ([$16E93C] < a0) return(0);
+$0010FEF0:long countStringWidth(char *str, int modeA, int modeB);
+$0010FF50:傳回總字串寬度(dot) + 4
+$0010FF70:? long getStrWidth(char *str,long modeA, modeB);
+$00110088:beginPacket
+$00110088:void *BeginPacket(PACKET *pkt, void *beginAddr);
+$0011008C:v0 = a1 = Begin addr of packets
+$00110090:pNowBlockAddr = BeginAddr;
+$00110098:pNext = NULL;
+$001100A0:void *EndPacket(PACKET *pkt);
+$001100A4:pNext = NULL;   v0 = pNowBlockAddr;
+$001100AC:set pPrevBlockAddr = pNowBlockAddr;
+$001100B0:? PACKET(
+$00110128:void *storeChain16A(void *ChainPtr, byte array[16]);
+$0011012C:ChainPtr = {void *addr1, void *addr2, ?, void *prevAddr1 };
+$00110140:void *storeChain16BA(void *ChainPtr, byte arrayB[8],	byte arrayA[8]);
+$00110178:p = *a0;  *p = 8_bytes(a1);  (*a0) += 8;
+$00110220:long 計算需幾個_8_bytes_move(long *buf);
+$00110228:t0 = buf[0] 是一個有 16 bytes 容量的指標
+$0011022C:a3 = buf[3] = 8 bytes ptr
+$00110240:a1 = (((buf[0] - buf[3]) >> 3) - 2) >> 1;
+$00110248:if ((buf[3]) == 0) return(*buf);
+$00110258:a0 = qword(*buf[3]) 的 bit[63-60] >> 60;
+$00110268:if (qword(*buf[3]) & (0xC000 << 44) == 0) 即 bit[59,58] == 00
+$0011026C:if (a0 = bit[63..60] != 0) t2 = v1= bit[63..60];
+$00110274:a1 = (((buf[0] - buf[3]) >> 3) + bit[63..60] - 3;
+$00110278:HI.LO = a1 / t2
+$00110298:v0 = qword(*buf[3]) + low_32_bit[((buf[0] - buf[3]) >> 3) + bit[63..60] - 2];
+$0011029C:if (buf[0] & 0x0C) == 0) return(buf[0]);
+$001102A0:write back to qword(*buf[3]);
+$001102A8:FillZero(ptr buf[0], 16 bytes, fill 0);
+$001102C0:buf[0] += 16;
+$001102C8:return(ptr buf[0]);
+$00110340:packetWork(PACKET *pkt, , ,);
+$001104B0:void set_GPU_Chains_Data(void *chainPtr, long gpuCode);
+$001104BC:v0 = byte array[16] = $168360
+$0011050C:a2 = (0xC000 << 19) + low_32_bit(gpuCode | 0x20010000);
+$00110550:void MoveToVRAM_A(PACKET *pkt, int gpuCode, int X, int Y, int xlen, int ylen,t2,t3,sp[16]);
+$00110564:s3 = pkt
+$00110718:void MoveToVRAM_B(void *buf, long gpuCode, int X, Y, xlen, ylen,t1,t2,t3);
+$00111790:_gp
+$00113010:? draw
+$001137F0:? SendPacket(PACKET *pkt, );
+$00113818:[sp + $10] = pkt;
+$001144D8:__drawBitMap
+$001144D8:drawBitMap(PACKET *pkt, int X, int Y, char *str, t0=1, t1=1, t2= 0x31, t3=0x52, sp[24]);
+$00114528:t0 = qword[$16AFA8]
+$00114EC8:?SendPacket(PACKET *pkt, int Y, int X, ,,,);
+$00115038:drawBitMap2(void *buf, int X, int Y, int ?, t0=1, t1=1, t2= 0x31, t3=0x52);
+$00115CF8:void VSync(void);
+$00115D40:return((long[$1000F000] >> 2) ^ 1 & 1);
+$00115D60:? set_gs_crt(qword a0, a1, a2, a3);
+$00115D70:qword [$12001000] = 0x200
+$00115D78:t0 = $16F190
+$00115D94:word[$16F190] = (a0 + a1) & 1;
+$00115D9C:word[$16F194] = a3 & 1;
+$00115DA8:word[$16F196] = [$12001000] & 0xFF;
+$00115DAC:SetGsCrt(a1, a2, a3);
+$00115DB0:word[$16F192] = a2;
+$00115DB8:CRT Work
+$00115DFC:v1 = ((((a1 & 0xFFFF) << 16) >> 16) + 0x3F) & 0xFFC0;
+$00115E00:v0 = ((((a2 & 0xFFFF) << 16) >> 16) + 0x1F) & 0xFFE0;
+$00115E18:v0 = (a1 >> 6) << 9;
+$00115E20:t1 = (a0 << 15) | ((a1 >> 6) << 9);
+$00115E34:a2 = $16F190
+$00115E38:a0 = ((v1 >> 11) << 16) >> 16;
+$00115E3C:s0 = a2 << 1;
+$00115E4C:s2 = 0x16ED50
+$00115E50:qword [$16ED50] = 0x66
+$00115E9C:v0 += 652
+$001164E0:設定畫面
+$00116728:繪圖
+$00116744:if ((long[$1000A000] & 0x0100) == 0)
+$00116760:if ((++a1) < 0xFFFFFF)
+$00116774:if ((long[$1000A000] & 0x100) != 0) goto part_2
+$00116784:if ((++a1) < 0xFFFFFF)
+$001168A4:繪圖 part_2
+$001168A8:繪圖 entry
+$001169F8:苦力式_gpu_cmd(long gpuCode, int left, up, top, bottom, r, g, b); // 上載 .img 圖案
+$00116A08:[sp + $80] = 0x16E950
+$00117C10:? no caller ?
+$00117D94:if ((long[$10009000] & 0x100) != 0)
+$00117DB8:IMR |= 0x200 (禁止某中斷)
+$00117DD4:v0 = [$12001000]
+$00117DF0:long[$10009020] = 7
+$00117E28:[$10009010] = sp 位址
+$00117E30:[$10009000] = 0x101
+$00117FB4:[$10003C00] = 0
+$00117FB8:restore IMR (恢復可中斷)
+$00117FC0:qword [$12001040] = 0
+$00118018:return(0x16F190)
+$00118028:return(0x16ED50)
+$00118038:return(0x16ED90 + (a0 << 9));
+$00118050:return(long[$16E940] & 1);
+$00118060:return( word[$16F198] );
+$00118070:return( word[$16F19A] );
+$00118080:return((0x800 - ((16_bit[$16F198] >> 1) - a0)) << 4);
+$001180A0:return((0x800 - ((16_bit[$16F19A] >> 1) - a0)) << 4);
+$001180C0:return(0x8000 - ((16_bit[$16F198] << 3) - a0));
+$001180E0:return(0x8000 - ((16_bit[$16F19A] << 3) - a0));
+$00118100:return(long[$1683A0]);
+$00118110:EnableIntc(long IntrNo);
+$00118178:SetGsCrt
+$00118188:LoadExecPS2
+$00118198:AddIntcHandler(int IntNo, void *IntrHandler, int code);
+$001181A8:RemoveIntcHandler(int IntrNo, ?)
+$001181B8:AddDmacHandler
+$001181C8:RemoveDmacHandler
+$001181D8:RemoveDmacHandler
+$001181E8:_EnableIntc(long IntrNo);
+$001181F8:_DisableIntc(long IntrNo);
+$00118208:_EnableDmac
+$00118218:_DisableDmac
+$00118228:_EnableDmac
+$00118238:_DisableDmac
+$00118248:_iDisableDmac
+$00118258:CreateThread
+$00118268:DeleteThread
+$00118278:StartThread
+$00118288:ExitThread
+$00118298:ExitDeleteThread
+$001182A8:ChangeThreadPriority
+$001182B8:RotateThreadReadyQueue
+$001182C8:GetThreadId
+$001182D8:SleepThread
+$001182E8:SleepThread
+$001182F8:WakeupThread
+$00118308:iWakeupThread
+$00118318:RFU060
+$00118328:iRFU061 ?
+$00118338:RFU061
+$00118348:CreateSema
+$00118358:DeleteSema
+$00118368:SignalSema
+$00118378:iSignalSema
+$00118388:WaitSema
+$00118398:PollSema
+$001183A8:iPollSema
+$001183B8:ReferSemaStatus
+$001183C8:iReferSemaStatus
+$001183D8:CreateSema
+$001183E8:DeleteSema
+$001183F8:SignalSema
+$00118408:iSignalSema
+$00118418:WaitSema
+$00118428:PollSema
+$00118438:iPollSema
+$00118448:ReferSemaStatus
+$00118458:iReferSemaStatus
+$00118468:FlushCache
+$00118478:FlushCache
+$00118488:GsGetIMR
+$00118498:GsPutIMR
+$001184A8:SetVSyncFlag
+$001184B8:RFU116
+$001184C8:sceSifSetDma
+$001184D8:isceSifSetDma
+$001184E8:sceSifSetDChain
+$001184F8:isceSifSetDChain
+$00118508:sceSifSetReg
+$00118518:sceSifGetReg
+$001185B0:sceGsXXX
+$00118608:v1 = $120000E0 = sceGs..
+$00118648:OpenFile(char *fn);
+$00118674:a1 = '%s:%s';
+$00118678:$16F1E0 = device name string (如 cdrom0)
+$00118698:a1 = '%s:\%s;1';
+$001186E8:int sceRead00(int handle, void *buf, int length);
+$00118710:int sceClose00(int handle);
+$00118730:int sceLseek00(int handle, int offset, int seekType);
+$00118750:SetDeviceString(int devNo);  // 放到 $16F1E0
+$00118764:v0 = $1683B0
+$00118778:a1 = long[0x1683B0 + (devNo * 4)] = 裝置名稱位址 = { host0. cdrom0. card. datel0 }
+$00118780:$16F1E0 = device name string (如 cdrom0)
+$001187A0:sceSifLoadFile(char *fn, int ?, ?);
+$001187F8:int getFileLength(int handle);
+$00118848:int loadFile_withAlloc(char *fn);
+$001188E8:int LoadFile(char *fn); // 傳回已讀長度
+$00118A48:long combineOut_16_bytes2(long addr, a1, a2, a3, t0, t1, t2, qword t3=Data2nd);
+$00118A68:a2 = (a2 << 15) | (t1 << 58)
+$00118A78:a1 = a1 | (t2 << 60) | (t0 << 47) | (a3 << 46) | (a2 << 15) | (t1 << 58)
+$00118A80:long store_16_bytes(long addr, qword Data2nd, qword Data1st);
+$00118D18:long combineOut_16_bytes(long addr, a1, a2, a3, t0, t1, t2);
+$00118D44:a2 的 high 32 bits = t0 | (t2[7..0] << 24) | (t1[15..0] << 16)
+$00118D48:a2 的 low 32 bits = a1 | (a2[15..0] << 16) | (a3[7..0] << 24)
+$00118D60:long combineOut_16_bytes3(long addr, a1, a3, t0, t1);
+$00118D80:a2 = (a3 << 16) | (a1 << 59) | (t0 << 32) | (t1 << 48)
+$00118DA0:long out_16_4(long addr, long low32, long hi32);
+$00118E58:long out_16_5(long addr, qword add_1, qword add_2);
+$00119A78:v0 = *($16F238)
+$00119A88:v0 = *($16F23C)
+$00119A98:new_iob
+$00119B08:get_iob
+$00119B30:sceFsInit
+$00119C08:sceOpen
+$00119D60:sceClose
+$00119E08:sceLseek
+$00119F68:sceRead
+$0011A098:? sceWrite
+$0011A318:cmd_sem_init
+$0011A3A0:cdvd_exit
+$0011A400:sceCdSearchFile
+$0011A640:ncmd_prechk
+$0011A730:sceCdNcmdDiskReady
+$0011A734:
+$0011A75C:pad SEMAbuf = $168CE0
+$0011A774:t1 = $169F80
+$0011A7C0:sceCdStandby
+$0011A878:sceCdStop
+$0011A938:sceCdSync
+$0011A9C0:sceCdSyncS
+$0011AA08:scmd_prechk
+$0011AAF8:sceCdInit
+$0011AC98:sceCdDiskReady
+$0011AE00:sceCdTrayReq
+$0011AEC8:sceSifLoadGsXX
+$0011B340:IntrHandler_0A:
+$0011B35C:($16A028)++
+$0011B360:long[$10000810] |= 0x0400
+$0011B3B0:a1 = $11B340 (= IntcHandler $0A)
+$0011B3D4:[$16A030] = 1
+$0011B418:a1 = $11B340 (= IntcHandler $0A)
+$0011B43C:[$16A030] = 1
+$0011B448:trySetVideo()
+$0011B460:long[$10000810] = 0x1C2;
+$0011B468:long[$10000800] = 0
+$0011B47C:long[$10000820] = 0x24A;
+$0011B480:a1 = $11B340 (= IntcHandler $0A)
+$0011B4A4:[$16A030] = 1
+$0011B4B0:long testVBlank();
+$0011B4D8:return([$16A028]);
+$0011B4E8:long check_AR2_dev(int memc_slot_No);
+$0011B4F4:檢查右方插槽
+$0011B508:檢查左方插槽
+$0011B540:long check_AR2_device(void);
+$0011B584:無裝置, 傳回 -1
+$0011BBD8:long 檢查_AR2_裝置(void);
+$0011BC38:long chkAR2_16A038(void);
+$0011BC68:long chkAR2_16A034(void);
+$0011BCA0:long chk_AR2_devC(int ?);
+$0011BD1C:long 檢查_AR2_16A034(void);
+$0011BD58:_lf_bind
+$0011BE00:_sceSifLoadModule
+$0011BFD0:sceSifInitRpc
+$0011C064:a1 = $11C710 (? Sema func ?)
+$0011C09C:a1 = $11C5D0 (? Thread func ?)
+$0011C0B4:a1 = $11C680 (? Thread func ?)
+$0011C0CC:a1 = $11C7A8 (? Sema func ?)
+$0011C160:void sceSifBindRpc0(SEMA *ptr, void *psPtr, int ?);
+$0011C180:void sceSifBindRpc(SEMA *ptr, void *psPtr, int ?);
+$0011C1A0:struct mreq = $172DE0
+$0011C1C4:if (s0 = pMreqRet = mem_sync(pMreq) == 0) return;
+$0011C1FC:SEMA = (sp) 佔 32 bytes !
+$0011C204:save sema_id
+$0011C208:if (CreateSema(pSema) < 0) return;
+$0011C214:a1 = s0 = pMreqRet
+$0011C288:return;
+$0011C2A8:void _sceRpcFreePacket(PACKET *pkt);
+$0011C2B4:*long[a0+$18] = 0;
+$0011C2C0:mask off bit_0[*(a0+16)];
+$0011C2C8:long sceSifCallRpc(void RecvBuf, int type, int slot, void SendBuf, t0=lenA, t1=SendBuf, t2=lenB);
+$0011C2D4:s1 = SEMA ptr.
+$0011C30C:a0 = $16A070
+$0011C324:if (v0 == 0) return(-1); // 記憶體同步失敗
+$0011C380:若已同步到兩位址相等, 則跳過下一個 cache(..);
+$0011C3BC:a1 = s0 = pMreqRet;
+$0011C3C0:SEMA[8] = 1 or -1;
+$0011C3CC:a0 = $8000000A
+$0011C3FC:save SEMA_ID at SEMA[8]
+$0011C404:v0 = -3 (無法產生 Sema)
+$0011C430:v0 = -2 (存取 memcard 失敗)
+$0011C454:return
+$0011C480:sceSifCheckStatRpc: 準備除法 dp[$24] / dp[$18]
+$0011C484:1f (long[$16E340] == 0) return(0);
+$0011C494:if (long[$16E344] == long[$16E358])
+$0011C498:dummy read long[$16E350];
+$0011C4B8:HI.LO = long[$16E364] / long[$16E358];
+$0011C4C0:goto ???
+$0011C4C8:除到零
+$0011C4E0:PACKET *_sceRpcGetPacket(PACKET *pkt);
+$0011C4FC:if (SR[DS.DE0] == 1) wait_sync
+$0011C508:if (long[a0 + 8] <= 0) return(NULL);
+$0011C50C:count a1 = 0;
+$0011C510:memptr *v1 = long[a0 + 4];
+$0011C528:if (*[v1 + 16] & 1) 當機
+$0011C52C:count ++;
+$0011C538:*[v1 +16] = (count << 16) | 5;
+$0011C53C:num = *a0;
+$0011C544:if ((num + 1) != 1) num ++;
+$0011C54C:else num += 2;
+$0011C550:*a0 = num;
+$0011C554:*[v1 + 24] = *a0 + 1;
+$0011C558:*[v1 + 20] = v1;
+$0011C564:return(memptr v1);
+$0011C5D0:Thread func ?
+$0011C680:_request_call
+$0011C710:? Sema func ?
+$0011C7A8:? Sema func ?
+$0011C808:int sceOpen0(char *pathFileName, int openMode);
+$0011C828:int sceClose0(int handle);
+$0011C848:int sceRead0(int handle, void *buf, int length);
+$0011C868:? sceWrite0
+$0011C888:int sceLseek0(int handle, int offset, int seekType);
+$0011C8A8:sceCdDiskReady
+$0011C8A8:sceCdDiskReady0
+$0011C8C8:sceCdSearchFile
+$0011C8C8:sceCdSearchFile0(void *buf, char *fileName);
+$0011C8E8:sceSifLoadModule(char *fn, int ?, ?);
+$0011C908:sceSifInitRpc0
+$0011C910:void sceSifCallRpc(void RecvBuf, int type, int slot, void SendBuf, t0=lenA, t1=SendBuf, t2=lenB);
+$0011C930:sceSifCheckStatRpc0: 準備除法 dp[$24] / dp[$18]
+$0011C950:long sceSifSendCmd0(void *a0, void *pMreqRet, int a2, int a3, int t0, int t1);
+$0011C990:sceSifInitCmd
+$0011C998:sceSifWriteBackDCache(void *cacheAddress, long lineLength);
+$0011CA48:iSignalSema
+$0011CA58:sceSifGetReg
+$0011CA68:iWakeupThread
+$0011CA78:AddDmacHandler
+$0011CA88:_EnableDmac
+$0011CA98:FlushCache
+$0011CAA8:sceSifSetDChain
+$0011CAB8:isceSifSetDChain
+$0011CAC8:sceSifSetDma
+$0011CAD8:isceSifSetDma
+$0011CAE8:long CreateSema(SEMA *buf_32_bytes);
+$0011CAF8:DeleteSema(long sema_id);
+$0011CB08:WaitSema(long sema_id);
+$0011CB18:long sceSifGetReg(long addr);
+$0011CB28:sceSifSetReg
+$0011D770:VSync2
+$0011D7D0:sceGsSyncV
+$0011DD90:sceSifGetSreg
+$0011DDD0:sceSifInitCmd
+$0011DF38:a1 = $11E240 (DMAC Handler)
+$0011E050:sceSifAddCmdHandler(long sceAddr, long eeAddr, ?);
+$0011E080:long _sceSifSendCmd(void *a0, int a1, PACKET *pkt, int a3,t0,t1,t2,t3);
+$0011E1B8:long sceSifSendCmd(void *a0, PACKET *pkt, int a2, int a3, int t0, int t1, int t2);
+$0011E240:DMAC Handler: (Type = 5)
+$0011EFA0:FillChar(void *dest, byte value, ulong length);
+$0011EFA0:fillchar
+$0011F040:?cpy(char *dest, char *src, int len);
+$0011F080:? strcmp(char *s1, char *s2);
+$0011F0F8:char *strcpy(char *dest, char *src);
+$0011F0F8:ustrcpy
+$0011F130:long strlen(char *str);
+$0011F130:ustrlen
+$0011F160:ustrncpy
+$0011F160:void *strncpy(void *dest, void *src, int len);
+$0011F280:_printf_r(void *buf, char *format,,,);
+$0011F280:sprintf
+$001203AC:jmp $16B2C0[n]
+$001210A0:do_init_1
+$001211D0:, malloc, _end
+$001211D0:void *EasyAlloc(int block_length);
+$001211D8:if ([$16A108] != 0)
+$001211E4:else return(0);
+$001211F0:t0 = *long($1734F0);
+$00121204:a3 = * 8bytes($16A150);
+$0012120C:t1 = (a0 + 15) & 0xFFFFFFF0; // 切齊 16 bytes
+$00121218:if (*t0 == 'T') return(0);
+$00121220:if (*t0 == 'F')
+$0016A16C:?
+$0016B310:一堆 jmp 用的 table !
