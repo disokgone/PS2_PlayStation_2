@@ -5,6 +5,9 @@ Most of the programs needs [psexe.com] to transmit the data and executive files 
 I preserved some .o (object) files because you may not have a complete compiler system to rebuild it.
 Some .REM files were remark text used in my MIPS R3000/R5000 disassembler.
 
+*** ps2lib was the first library to be released. Created by Gustavo Scotti, the library was released in October 2001.  (this text line was copied from ps2dev)
+*** Thanks to Gustavo Scotti (gustavo@scotti.com) ***
+
 [8x8 Font Test]  Try to show DOS 8x12 font to PS2 screen.
 
 [GameSaveFor_PS2MC\BISLPM-62005XXXXXXXX] Some files downloaded from a PS2 memory card for use in PS2MC project below. (OpenGL was used to show 3D animation images.)
