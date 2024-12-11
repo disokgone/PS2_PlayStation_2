@@ -1,0 +1,487 @@
+#######################################################################
+#
+#		MAKEFILE	for 無双２
+#
+#			データリンク
+#													A.Suzuki
+#######################################################################
+
+
+# DIRECTORYS ##########################################################
+EXEDIR		= ..\ex
+TOOLM		= ..\tool
+
+CHARA		= ..\data\chara\out
+STAGE		= ..\data\STAGE
+SND			= ..\data\snd
+# ステージ
+ST_KRK		= $(STAGE)\KOROUKAN
+ST_GPI		= $(STAGE)\GAPPI
+ST_KKN		= $(STAGE)\KOUKIN
+ST_GJN		= $(STAGE)\GOJOUGEN
+ST_SKK		= $(STAGE)\SEKIHEKI
+ST_KNT		= $(STAGE)\KANTO
+ST_CHN		= $(STAGE)\CHOUHAN
+ST_IRY		= $(STAGE)\IRYOU
+
+ALGO		= ..\data\algo
+AL_KOUK		= $(ALGO)\koukin
+AL_KORO		= $(ALGO)\koroukan
+AL_KANT		= $(ALGO)\kanto
+AL_CHOU		= $(ALGO)\chouhan
+AL_SEKI		= $(ALGO)\sekiheki
+AL_GAPP		= $(ALGO)\gappi
+AL_IRYO		= $(ALGO)\iryou
+AL_GOJO		= $(ALGO)\gojougen
+
+MAP			= ..\data\map
+MARK		= ..\data\marker
+CSEL		= ..\data\charsel
+ETC			= ..\data\etc
+ITEM		= ..\data\item
+
+EFF_TEX		= ..\data\eff_tex
+
+EVENT		= $(EXEDIR)\event
+
+OPTION		= ..\data\option
+MCARD		= ..\data\memcard
+
+.SUFFIXES:	 .tim .mot .ps2 .bin .dat
+
+# TARGET ###############################################################
+all :	$(EXEDIR)\linkdata.bns
+
+# OBJECT ###############################################################
+DATA_OBJ	= \
+# Model Texture
+	$(CHARA)\CHOUUN.TIM		\
+	$(CHARA)\KANU.TIM		\
+	$(CHARA)\CHOUHI.TIM		\
+	$(CHARA)\KAKOUTON.TIM	\
+	$(CHARA)\TENI.TIM		\
+	$(CHARA)\KYOCHO.TIM		\
+	$(CHARA)\SHUUYU.TIM		\
+	$(CHARA)\RIKUSON.TIM	\
+	$(CHARA)\TAISHIJI.TIM	\
+	$(CHARA)\CHOUSEN.TIM	\
+	$(CHARA)\KOUMEI.TIM		\
+	$(CHARA)\SOUSOU.TIM		\
+	$(CHARA)\RYOFU.TIM		\
+	$(CHARA)\SHOUKOU.TIM	\
+	$(CHARA)\RYUUBI.TIM		\
+	$(CHARA)\SONKEN1.TIM	\
+	$(CHARA)\SONKEN2.TIM	\
+	$(CHARA)\TOUTAKU.TIM	\
+	$(CHARA)\ENSHOU.TIM		\
+	$(CHARA)\BACHOU.TIM		\
+	$(CHARA)\KOUCHUU.TIM	\
+	$(CHARA)\KAKOUEN.TIM	\
+	$(CHARA)\CHOURYOU.TIM	\
+	$(CHARA)\SHIBAI.TIM		\
+	$(CHARA)\RYOMOU.TIM		\
+	$(CHARA)\KANNEI.TIM		\
+	$(CHARA)\KYOUI.TIM		\
+	$(CHARA)\CHOUKAKU.TIM	\
+	$(CHARA)\SOLD1.TIM		\
+	$(CHARA)\SOLD2.TIM		\
+	$(CHARA)\SOLD3.TIM		\
+	$(CHARA)\SOLD4.TIM		\
+	$(CHARA)\ARCHER1.TIM	\
+	$(CHARA)\ARCHER2.TIM	\
+	$(CHARA)\YELLOW1.TIM	\
+	$(CHARA)\YELLOW2.TIM	\
+	$(CHARA)\BOSS1.TIM		\
+	$(CHARA)\BOSS2.TIM		\
+	$(CHARA)\BOSS3.TIM		\
+	$(CHARA)\HORSE0.TIM		\
+	$(CHARA)\HORSE1.TIM		\
+# Model & FaceMotion
+	$(CHARA)\CHOUUN.PS2		$(CHARA)\CHOUUN.FA		\
+	$(CHARA)\KANU.PS2		$(CHARA)\KANU.FA		\
+	$(CHARA)\CHOUHI.PS2		$(CHARA)\CHOUHI.FA		\
+	$(CHARA)\KAKOUTON.PS2	$(CHARA)\KAKOUTON.FA	\
+	$(CHARA)\TENI.PS2		$(CHARA)\TENI.FA		\
+	$(CHARA)\KYOCHO.PS2		$(CHARA)\KYOCHO.FA		\
+	$(CHARA)\SHUUYU.PS2		$(CHARA)\SHUUYU.FA		\
+	$(CHARA)\RIKUSON.PS2	$(CHARA)\RIKUSON.FA		\
+	$(CHARA)\TAISHIJI.PS2	$(CHARA)\TAISHIJI.FA	\
+	$(CHARA)\CHOUSEN.PS2	$(CHARA)\CHOUSEN.FA		\
+	$(CHARA)\KOUMEI.PS2		$(CHARA)\KOUMEI.FA		\
+	$(CHARA)\SOUSOU.PS2		$(CHARA)\SOUSOU.FA		\
+	$(CHARA)\RYOFU.PS2		$(CHARA)\RYOFU.FA		\
+	$(CHARA)\SHOUKOU.PS2	$(CHARA)\SHOUKOU.FA		\
+	$(CHARA)\RYUUBI.PS2		$(CHARA)\RYUUBI.FA		\
+	$(CHARA)\SONKEN1.PS2	$(CHARA)\SONKEN1.FA		\
+	$(CHARA)\SONKEN2.PS2	$(CHARA)\SONKEN2.FA		\
+	$(CHARA)\TOUTAKU.PS2	$(CHARA)\TOUTAKU.FA		\
+	$(CHARA)\ENSHOU.PS2		$(CHARA)\ENSHOU.FA		\
+	$(CHARA)\BACHOU.PS2		$(CHARA)\BACHOU.FA		\
+	$(CHARA)\KOUCHUU.PS2	$(CHARA)\KOUCHUU.FA		\
+	$(CHARA)\KAKOUEN.PS2	$(CHARA)\KAKOUEN.FA		\
+	$(CHARA)\CHOURYOU.PS2	$(CHARA)\CHOURYOU.FA	\
+	$(CHARA)\SHIBAI.PS2		$(CHARA)\SHIBAI.FA		\
+	$(CHARA)\RYOMOU.PS2		$(CHARA)\RYOMOU.FA		\
+	$(CHARA)\KANNEI.PS2		$(CHARA)\KANNEI.FA		\
+	$(CHARA)\KYOUI.PS2		$(CHARA)\KYOUI.FA		\
+	$(CHARA)\CHOUKAKU.PS2	$(CHARA)\CHOUKAKU.FA	\
+	$(CHARA)\SOLD1.PS2		$(CHARA)\SOLD1.FA		\
+	$(CHARA)\SOLD2.PS2		$(CHARA)\SOLD2.FA		\
+	$(CHARA)\SOLD3.PS2		$(CHARA)\SOLD3.FA		\
+	$(CHARA)\SOLD4.PS2		$(CHARA)\SOLD4.FA		\
+	$(CHARA)\ARCHER1.PS2	$(CHARA)\ARCHER1.FA		\
+	$(CHARA)\ARCHER2.PS2	$(CHARA)\ARCHER2.FA		\
+	$(CHARA)\YELLOW1.PS2	$(CHARA)\YELLOW1.FA		\
+	$(CHARA)\YELLOW2.PS2	$(CHARA)\YELLOW2.FA		\
+	$(CHARA)\BOSS1.PS2		$(CHARA)\BOSS1.FA		\
+	$(CHARA)\BOSS2.PS2		$(CHARA)\BOSS2.FA		\
+	$(CHARA)\BOSS3.PS2		$(CHARA)\BOSS3.FA		\
+	$(CHARA)\HORSE0.PS2		$(CHARA)\HORSE1.PS2		\
+	$(CHARA)\KAKOUTON0.PS2							\
+# PoseMotion
+	$(CHARA)\CHOUUN.PM		\
+	$(CHARA)\KANU.PM		\
+	$(CHARA)\CHOUHI.PM		\
+	$(CHARA)\KAKOUTON.PM	\
+	$(CHARA)\TENI.PM		\
+	$(CHARA)\KYOCHO.PM		\
+	$(CHARA)\SHUUYU.PM		\
+	$(CHARA)\RIKUSON.PM		\
+	$(CHARA)\TAISHIJI.PM	\
+	$(CHARA)\CHOUSEN.PM		\
+	$(CHARA)\KOUMEI.PM		\
+	$(CHARA)\SOUSOU.PM		\
+	$(CHARA)\RYOFU.PM		\
+	$(CHARA)\SHOUKOU.PM		\
+	$(CHARA)\RYUUBI.PM		\
+	$(CHARA)\SONKEN1.PM		\
+	$(CHARA)\SONKEN2.PM		\
+	$(CHARA)\TOUTAKU.PM		\
+	$(CHARA)\ENSHOU.PM		\
+	$(CHARA)\BACHOU.PM		\
+	$(CHARA)\KOUCHUU.PM		\
+	$(CHARA)\KAKOUEN.PM		\
+	$(CHARA)\CHOURYOU.PM	\
+	$(CHARA)\SHIBAI.PM		\
+	$(CHARA)\RYOMOU.PM		\
+	$(CHARA)\KANNEI.PM		\
+	$(CHARA)\KYOUI.PM		\
+	$(CHARA)\CHOUKAKU.PM	\
+# Motion
+	$(CHARA)\CHOUUN.MOT		$(CHARA)\CHOUUN.MOV		$(CHARA)\CHOUUN.ATK		\
+ 	$(CHARA)\KANU.MOT		$(CHARA)\KANU.MOV		$(CHARA)\KANU.ATK		\
+ 	$(CHARA)\CHOUHI.MOT		$(CHARA)\CHOUHI.MOV		$(CHARA)\CHOUHI.ATK		\
+ 	$(CHARA)\KAKOUTO.MOT	$(CHARA)\KAKOUTO.MOV	$(CHARA)\KAKOUTO.ATK	\
+ 	$(CHARA)\TENI.MOT		$(CHARA)\TENI.MOV		$(CHARA)\TENI.ATK		\
+ 	$(CHARA)\KYOCHO.MOT		$(CHARA)\KYOCHO.MOV		$(CHARA)\KYOCHO.ATK		\
+ 	$(CHARA)\SHUUYU.MOT		$(CHARA)\SHUUYU.MOV		$(CHARA)\SHUUYU.ATK		\
+ 	$(CHARA)\RIKUSON.MOT	$(CHARA)\RIKUSON.MOV	$(CHARA)\RIKUSON.ATK	\
+ 	$(CHARA)\TAISHIJ.MOT	$(CHARA)\TAISHIJ.MOV	$(CHARA)\TAISHIJ.ATK	\
+ 	$(CHARA)\CHOUSEN.MOT	$(CHARA)\CHOUSEN.MOV	$(CHARA)\CHOUSEN.ATK	\
+ 	$(CHARA)\KOUMEI.MOT		$(CHARA)\KOUMEI.MOV		$(CHARA)\KOUMEI.ATK		\
+ 	$(CHARA)\SOUSOU.MOT		$(CHARA)\SOUSOU.MOV		$(CHARA)\SOUSOU.ATK		\
+ 	$(CHARA)\RYOFU.MOT		$(CHARA)\RYOFU.MOV		$(CHARA)\RYOFU.ATK		\
+ 	$(CHARA)\SHOUKOU.MOT	$(CHARA)\SHOUKOU.MOV	$(CHARA)\SHOUKOU.ATK	\
+ 	$(CHARA)\ARCHER.MOT		$(CHARA)\ARCHER.MOV		$(CHARA)\ARCHER.ATK		\
+ 	$(CHARA)\GUNNER.MOT		$(CHARA)\GUNNER.MOV		$(CHARA)\GUNNER.ATK		\
+ 	$(CHARA)\SWORD1.MOT		$(CHARA)\SWORD1.MOV		$(CHARA)\SWORD1.ATK		\
+ 	$(CHARA)\SWORD2.MOT		$(CHARA)\SWORD2.MOV		$(CHARA)\SWORD2.ATK		\
+ 	$(CHARA)\SWORD3.MOT		$(CHARA)\SWORD3.MOV		$(CHARA)\SWORD3.ATK		\
+ 	$(CHARA)\SWORD4.MOT		$(CHARA)\SWORD4.MOV		$(CHARA)\SWORD4.ATK		\
+ 	$(CHARA)\SPEAR1.MOT		$(CHARA)\SPEAR1.MOV		$(CHARA)\SPEAR1.ATK		\
+ 	$(CHARA)\SPEAR2.MOT		$(CHARA)\SPEAR2.MOV		$(CHARA)\SPEAR2.ATK		\
+ 	$(CHARA)\HAL1.MOT		$(CHARA)\HAL1.MOV		$(CHARA)\HAL1.ATK		\
+ 	$(CHARA)\HAL2.MOT		$(CHARA)\HAL2.MOV		$(CHARA)\HAL2.ATK		\
+	$(CHARA)\HORSE.MOT		$(CHARA)\HORSE.MOV		$(CHARA)\HORSE.ATK		\
+	$(CHARA)\CMNMOT.MOT														\
+	$(CHARA)\STARTMOT.MOT	$(CHARA)\STARTMOT.MOV							\
+# Event Motion
+	$(CHARA)\ST1A.MOT		$(CHARA)\ST1A.MOV								\
+	$(CHARA)\ST2A.MOT		$(CHARA)\ST2A.MOV								\
+	$(CHARA)\ST3A.MOT		$(CHARA)\ST3A.MOV								\
+	$(CHARA)\ST4A.MOT		$(CHARA)\ST4A.MOV								\
+	$(CHARA)\ST5A.MOT		$(CHARA)\ST5A.MOV								\
+	$(CHARA)\ST6A.MOT		$(CHARA)\ST6A.MOV								\
+	$(CHARA)\ST7A.MOT		$(CHARA)\ST7A.MOV								\
+	$(CHARA)\ST8A.MOT		$(CHARA)\ST8A.MOV								\
+	$(CHARA)\ST1B.MOT		$(CHARA)\ST1B.MOV								\
+	$(CHARA)\ST2B.MOT		$(CHARA)\ST2B.MOV								\
+	$(CHARA)\ST3B.MOT		$(CHARA)\ST3B.MOV								\
+	$(CHARA)\ST4B.MOT		$(CHARA)\ST4B.MOV								\
+	$(CHARA)\ST5B.MOT		$(CHARA)\ST5B.MOV								\
+	$(CHARA)\ST6B.MOT		$(CHARA)\ST6B.MOV								\
+	$(CHARA)\ST7B.MOT		$(CHARA)\ST7B.MOV								\
+	$(CHARA)\ST8B.MOT		$(CHARA)\ST8B.MOV								\
+# Weapon Model
+	$(CHARA)\WEAPON.TIM		$(CHARA)\ram2.tim								\
+	$(CHARA)\rindou.ps2		$(CHARA)\seiryuu.ps2	$(CHARA)\dabou.ps2		\
+	$(CHARA)\kiringa.ps2	$(CHARA)\gozu.ps2		$(CHARA)\shiyuu.ps2		\
+	$(CHARA)\kotei.ps2		$(CHARA)\r_hien.ps2		$(CHARA)\ourou.ps2		\
+	$(CHARA)\r_sui.ps2		$(CHARA)\usen.ps2		$(CHARA)\iten.ps2		\
+	$(CHARA)\gageki.ps2		$(CHARA)\kenkonken.ps2	$(CHARA)\bow.ps2		\
+	$(CHARA)\bowgun.ps2		$(CHARA)\sword1.ps2		$(CHARA)\sword2.ps2		\
+	$(CHARA)\sword3.ps2		$(CHARA)\sword4.ps2		$(CHARA)\spear1.ps2		\
+	$(CHARA)\spear2.ps2		$(CHARA)\halberd1.ps2	$(CHARA)\halberd2.ps2	\
+	$(CHARA)\arrow.ps2														\
+# Item Model
+	$(CHARA)\controller.ps2	$(CHARA)\cont_map.tim
+
+STAGE_DT = \
+	$(ST_KRK)\koroukan.stg	$(ST_KRK)\koroukan.obj	$(ST_KRK)\koroukan.tis	\
+	$(ST_KRK)\koroukan.ob2	$(ST_KRK)\koroukan.gob	$(ST_KRK)\koroukan.fob	\
+	$(ST_KRK)\koroukan.lb	$(ST_KRK)\koroukan.cob	$(ST_KRK)\koroukan.ulb	\
+	$(ST_KRK)\sky2.tis	$(ST_KRK)\koroukan.lgt	\
+	$(ST_KRK)\koroukan.van	$(ST_KRK)\koroukan_minimap.obj	$(ST_KRK)\koroukan.seb	\
+	$(ST_KRK)\koroukan.ab	\
+	$(ST_GPI)\gappi.stg	$(ST_GPI)\gappi.obj	$(ST_GPI)\gappi.tis	\
+	$(ST_GPI)\gappi.ob2	$(ST_GPI)\gappi.gob	$(ST_GPI)\gappi.fob	\
+	$(ST_GPI)\gappi.lb	$(ST_GPI)\gappi.cob	$(ST_GPI)\gappi.ulb	\
+	$(ST_GPI)\sky6.tis	$(ST_GPI)\gappi.tan	$(ST_GPI)\gappi.lgt	\
+	$(ST_GPI)\gappi.van	$(ST_GPI)\gappi_minimap.obj	$(ST_GPI)\gappi.seb	\
+	$(ST_GPI)\gappi.ab	$(ST_GPI)\gappi.ob3	\
+	$(ST_KKN)\koukin.stg	$(ST_KKN)\koukin.obj	$(ST_KKN)\koukin.tis	\
+	$(ST_KKN)\koukin.ob2	$(ST_KKN)\koukin.gob	$(ST_KKN)\koukin.fob	\
+	$(ST_KKN)\koukin.lb		$(ST_KKN)\koukin.cob	$(ST_KKN)\koukin.ulb	\
+	$(ST_KKN)\sky1.tis	$(ST_KKN)\koukin.lgt	\
+	$(ST_KKN)\koukin.van	$(ST_KKN)\koukin_minimap.obj	$(ST_KKN)\koukin.seb	\
+	$(ST_KKN)\koukin.ab	$(ST_KKN)\koukin.ob3	\
+	$(ST_GJN)\gojougen.stg	$(ST_GJN)\gojougen.obj	$(ST_GJN)\gojougen.tis	\
+	$(ST_GJN)\gojougen.ob2	$(ST_GJN)\gojougen.gob	$(ST_GJN)\gojougen.fob	\
+	$(ST_GJN)\gojougen.lb	$(ST_GJN)\gojougen.cob	$(ST_GJN)\gojougen.ulb	\
+	$(ST_GJN)\sky8.tis	$(ST_GJN)\gojougen.tan	$(ST_GJN)\gojougen.lgt	\
+	$(ST_GJN)\gojougen_minimap.obj	$(ST_GJN)\gojougen.seb	\
+	$(ST_GJN)\gojougen.ab	$(ST_GJN)\gojougen.ob3	\
+	$(ST_SKK)\sekiheki.stg	$(ST_SKK)\sekiheki.obj	$(ST_SKK)\sekiheki.tis	\
+	$(ST_SKK)\sekiheki.ob2	$(ST_SKK)\sekiheki.gob	$(ST_SKK)\sekiheki.fob	\
+	$(ST_SKK)\sekiheki.lb	$(ST_SKK)\sekiheki.cob	$(ST_SKK)\sekiheki.ulb	\
+	$(ST_SKK)\sky5.tis	$(ST_SKK)\sekiheki.lgt	\
+	$(ST_SKK)\sekiheki.van	$(ST_SKK)\sekiheki_minimap.obj	$(ST_SKK)\sekiheki.seb	\
+	$(ST_SKK)\sekiheki.ab	$(ST_SKK)\sekiheki.ob3	\
+	$(ST_KNT)\kanto.stg	$(ST_KNT)\kanto.obj	$(ST_KNT)\kanto.tis	\
+	$(ST_KNT)\kanto.ob2	$(ST_KNT)\kanto.gob	$(ST_KNT)\kanto.fob	\
+	$(ST_KNT)\kanto.lb	$(ST_KNT)\kanto.cob	$(ST_KNT)\kanto.ulb	\
+	$(ST_KNT)\sky3.tis	$(ST_KNT)\kanto.lgt	\
+	$(ST_KNT)\kanto_minimap.obj	$(ST_KNT)\kanto.seb		\
+	$(ST_KNT)\kanto.ab	$(ST_KNT)\kanto.ob3		\
+	$(ST_CHN)\chouhan.stg	$(ST_CHN)\chouhan.obj	$(ST_CHN)\chouhan.tis	\
+	$(ST_CHN)\chouhan.ob2	$(ST_CHN)\chouhan.gob	$(ST_CHN)\chouhan.fob	\
+	$(ST_CHN)\chouhan.lb	$(ST_CHN)\chouhan.cob	$(ST_CHN)\chouhan.ulb	\
+	$(ST_CHN)\sky4.tis	$(ST_CHN)\chouhan.lgt	\
+	$(ST_CHN)\chouhan.van	$(ST_CHN)\chouhan_minimap.obj	$(ST_CHN)\chouhan.seb	\
+	$(ST_CHN)\chouhan.ab	$(ST_CHN)\chouhan.ob3	\
+	$(ST_IRY)\iryou.stg	$(ST_IRY)\iryou.obj	$(ST_IRY)\iryou.tis	\
+	$(ST_IRY)\iryou.ob2	$(ST_IRY)\iryou.gob	$(ST_IRY)\iryou.fob	\
+	$(ST_IRY)\iryou.lb	$(ST_IRY)\iryou.cob	$(ST_IRY)\iryou.ulb	\
+	$(ST_IRY)\sky7.tis	$(ST_IRY)\iryou.lgt	\
+	$(ST_IRY)\iryou.van	$(ST_IRY)\iryou_minimap.obj	$(ST_IRY)\iryou.seb	\
+	$(ST_IRY)\iryou.ab	$(ST_IRY)\iryou.ob3
+
+SND_DATA = \
+# HD
+	$(SND)\system.hd	$(SND)\attack.hd	$(SND)\move.hd	$(SND)\generalv.hd	\
+	$(SND)\es_koukin.hd		$(SND)\es_koroukan.hd	$(SND)\es_kanto.hd	\
+	$(SND)\es_chouhan.hd	$(SND)\es_sekiheki.hd	$(SND)\es_gappi.hd	\
+	$(SND)\es_iryou.hd		$(SND)\es_gojougen.hd	\
+	$(SND)\chouun.hd	$(SND)\kanu.hd		$(SND)\chouhi.hd	$(SND)\kakouton.hd	\
+	$(SND)\teni.hd		$(SND)\kyocho.hd	$(SND)\shuuyu.hd	$(SND)\rikuson.hd	\
+	$(SND)\taishiji.hd	$(SND)\chousen.hd	$(SND)\koumei.hd	$(SND)\sousou.hd	\
+	$(SND)\ryofu.hd		$(SND)\shoukou.hd	$(SND)\ryuubi.hd		$(SND)\sonken1.hd	\
+	$(SND)\sonken2.hd	$(SND)\toutaku.hd	$(SND)\enshou.hd	$(SND)\bachou.hd	\
+	$(SND)\kouchuu.hd	$(SND)\kakouen.hd	$(SND)\chouryou.hd	$(SND)\shibai.hd	\
+	$(SND)\ryomou.hd	$(SND)\kannei.hd	$(SND)\kyoui.hd		$(SND)\choukaku.hd	\
+	$(SND)\fv_koukin.hd		$(SND)\fv_koroukan.hd	$(SND)\fv_kanto.hd		\
+	$(SND)\fv_chouhan.hd	$(SND)\fv_sekiheki.hd	$(SND)\fv_gappi.hd		\
+	$(SND)\fv_iryou.hd		$(SND)\fv_gojougen.hd	\
+	$(SND)\chrsele_1.hd		$(SND)\chrsele_2.hd		$(SND)\chrsele_3.hd		\
+	$(SND)\pr_koukin.hd		$(SND)\pr_koroukan.hd	$(SND)\pr_kanto.hd		\
+	$(SND)\pr_chouhan.hd	$(SND)\pr_sekiheki_gi.hd	$(SND)\pr_sekiheki_go.hd	\
+	$(SND)\pr_gappi.hd		$(SND)\pr_iryou_go.hd	$(SND)\pr_iryou_shoku.hd	\
+	$(SND)\pr_gojougen_gi.hd	$(SND)\pr_gojougen_shoku.hd	\
+	$(SND)\stage_title.hd	$(SND)\gameover.hd	\
+# BD
+	$(SND)\system.bd	$(SND)\attack.bd	$(SND)\move.bd	$(SND)\generalv.bd	\
+	$(SND)\es_koukin.bd		$(SND)\es_koroukan.bd	$(SND)\es_kanto.bd	\
+	$(SND)\es_chouhan.bd	$(SND)\es_sekiheki.bd	$(SND)\es_gappi.bd	\
+	$(SND)\es_iryou.bd		$(SND)\es_gojougen.bd	\
+	$(SND)\chouun.bd	$(SND)\kanu.bd		$(SND)\chouhi.bd	$(SND)\kakouton.bd	\
+	$(SND)\teni.bd		$(SND)\kyocho.bd	$(SND)\shuuyu.bd	$(SND)\rikuson.bd	\
+	$(SND)\taishiji.bd	$(SND)\chousen.bd	$(SND)\koumei.bd	$(SND)\sousou.bd	\
+	$(SND)\ryofu.bd		$(SND)\shoukou.bd	$(SND)\ryuubi.bd		$(SND)\sonken1.bd	\
+	$(SND)\sonken2.bd	$(SND)\toutaku.bd	$(SND)\enshou.bd	$(SND)\bachou.bd	\
+	$(SND)\kouchuu.bd	$(SND)\kakouen.bd	$(SND)\chouryou.bd	$(SND)\shibai.bd	\
+	$(SND)\ryomou.bd	$(SND)\kannei.bd	$(SND)\kyoui.bd		$(SND)\choukaku.bd	\
+	$(SND)\fv_koukin.bd		$(SND)\fv_koroukan.bd	$(SND)\fv_kanto.bd		\
+	$(SND)\fv_chouhan.bd	$(SND)\fv_sekiheki.bd	$(SND)\fv_gappi.bd		\
+	$(SND)\fv_iryou.bd		$(SND)\fv_gojougen.bd	\
+	$(SND)\chrsele_1.bd		$(SND)\chrsele_2.bd		$(SND)\chrsele_3.bd		\
+	$(SND)\pr_koukin.bd		$(SND)\pr_koroukan.bd	$(SND)\pr_kanto.bd		\
+	$(SND)\pr_chouhan.bd	$(SND)\pr_sekiheki_gi.bd	$(SND)\pr_sekiheki_go.bd	\
+	$(SND)\pr_gappi.bd		$(SND)\pr_iryou_go.bd	$(SND)\pr_iryou_shoku.bd	\
+	$(SND)\pr_gojougen_gi.bd	$(SND)\pr_gojougen_shoku.bd	\
+	$(SND)\stage_title.bd	$(SND)\gameover.bd	\
+
+ALGO_DATA = \
+	$(AL_KOUK)\koukin.bb	$(AL_KOUK)\koukin.sb	$(AL_KOUK)\koukin.ub0	$(AL_KOUK)\koukin.ub1		$(AL_KOUK)\koukin.pb	\
+	$(AL_KORO)\koroukan.bb	$(AL_KORO)\koroukan.sb	$(AL_KORO)\koroukan.ub0	$(AL_KORO)\koroukan.ub1		$(AL_KORO)\koroukan.pb	\
+	$(AL_KANT)\kanto.bb		$(AL_KANT)\kanto.sb		$(AL_KANT)\kanto.ub0	$(AL_KANT)\kanto.ub1		$(AL_KANT)\kanto.pb		\
+	$(AL_CHOU)\chouhan.bb	$(AL_CHOU)\chouhan.sb	$(AL_CHOU)\chouhan.ub0	$(AL_CHOU)\chouhan.ub1		$(AL_CHOU)\chouhan.pb	\
+	$(AL_SEKI)\sekiheki.bb	$(AL_SEKI)\sekiheki.sb	$(AL_SEKI)\sekiheki.ub0	$(AL_SEKI)\sekiheki.ub1		$(AL_SEKI)\sekiheki.pb	\
+	$(AL_GAPP)\gappi.bb		$(AL_GAPP)\gappi.sb		$(AL_GAPP)\gappi.ub0	$(AL_GAPP)\gappi.ub1		$(AL_GAPP)\gappi.pb		\
+	$(AL_IRYO)\iryou.bb		$(AL_IRYO)\iryou.sb		$(AL_IRYO)\iryou.ub0	$(AL_IRYO)\iryou.ub1		$(AL_IRYO)\iryou.pb		\
+	$(AL_GOJO)\gojougen.bb	$(AL_GOJO)\gojougen.sb	$(AL_GOJO)\gojougen.ub0	$(AL_GOJO)\gojougen.ub1		$(AL_GOJO)\gojougen.pb
+
+MAP_DATA = \
+	$(MAP)\koukin.tim		$(MAP)\koroukan.tim		$(MAP)\kanto.tim		$(MAP)\chouhan.tim		\
+	$(MAP)\sekiheki.tim		$(MAP)\gappi.tim		$(MAP)\iryou.tim		$(MAP)\gojougen.tim		\
+	$(MAP)\iryou2.tim
+
+MARK_DATA = \
+	$(MARK)\marker.tim		\
+	$(MARK)\smesdead.dat	$(MARK)\smeswin.dat		$(MARK)\smeslose.dat	$(MARK)\smesbtl.dat		\
+	$(MARK)\stgtitle.dat	$(MARK)\stgtlbg.tim
+
+CSEL_DATA = \
+	$(CSEL)\flag.tim		$(CSEL)\stname.tim		$(CSEL)\chinamap.tim	$(CSEL)\still00.tim		\
+	$(CSEL)\still01.tim		$(CSEL)\still02.tim		$(CSEL)\still03.tim		$(CSEL)\still04.tim		\
+	$(CSEL)\still05.tim		$(CSEL)\still06.tim		$(CSEL)\still07.tim		\
+	$(CSEL)\fog01.tim		$(CSEL)\fog02.tim		$(CSEL)\fog03.tim		\
+	$(CSEL)\fog_c01.clt		$(CSEL)\fog_c02.clt		$(CSEL)\fog_c03.clt
+
+ITEM_DATA = \
+	$(ITEM)\item.ob2	$(ITEM)\item.tis
+
+EFFECT_DATA = \
+	$(EFF_TEX)\fire.tm2	$(EFF_TEX)\smo.tm2	\
+	$(EFF_TEX)\sibuki.tm2	$(EFF_TEX)\hit.tim	\
+	$(EFF_TEX)\particle.tim	$(EFF_TEX)\cha.tim	\
+	$(EFF_TEX)\piyo.tim	$(EFF_TEX)\gurd.tim	\
+	$(EFF_TEX)\hajiki.tim	$(EFF_TEX)\zeri.tim	\
+	$(EFF_TEX)\ram3.tim	$(EFF_TEX)\ram1.tim	\
+	$(EFF_TEX)\ram1b.clt	$(EFF_TEX)\ram1r.clt	\
+	$(EFF_TEX)\ram1g.clt	$(EFF_TEX)\ram1p.clt	\
+	$(EFF_TEX)\ram1c.clt							\
+	$(EFF_TEX)\ram2b.clt	$(EFF_TEX)\ram2r.clt	\
+	$(EFF_TEX)\ram2g.clt	$(EFF_TEX)\ram2p.clt	\
+	$(EFF_TEX)\ram2c.clt	$(EFF_TEX)\hei_tex.tim	\
+	$(EFF_TEX)\star01.tim	$(EFF_TEX)\snow.tim	\
+	$(EFF_TEX)\sun00.tim
+
+
+ETC_DATA = \
+	$(ETC)\title.tim		\
+	$(ETC)\tlfont0.tim		$(ETC)\tlfont1.tim		$(ETC)\tlfont2.tim		$(ETC)\tlfont3.tim		\
+	$(STAGE)\briefing.ob2	$(ETC)\gameover.tim
+
+EVENT_DATA = \
+	$(EVENT)\ev01.bin		\
+	$(EVENT)\ev02.bin		$(EVENT)\evcam02.bin	\
+	$(EVENT)\ev03.bin		$(EVENT)\evcam03.bin	\
+	$(EVENT)\ev04.bin		\
+	$(EVENT)\ev05.bin		$(EVENT)\evcam05.bin	\
+	$(EVENT)\evcam01a.bin	$(EVENT)\evcam01b.bin	\
+	$(EVENT)\evcam01c.bin	$(EVENT)\evcam01d.bin	\
+	$(EVENT)\evcam01e.bin	$(EVENT)\evcam01f.bin	\
+	$(EVENT)\evcam01g.bin	$(EVENT)\evcam01h.bin	\
+	$(EVENT)\evcam01i.bin	$(EVENT)\evcam01j.bin	\
+	$(EVENT)\evcam01k.bin	$(EVENT)\evcam01l.bin	\
+	$(EVENT)\evcam01m.bin	$(EVENT)\evcam01n.bin	\
+	$(EVENT)\evcam01r.bin	$(EVENT)\evcam01x.bin	\
+	$(EVENT)\evcam01y.bin	$(EVENT)\evcam01z.bin	\
+	$(EVENT)\evcam04a.bin	$(EVENT)\evcam04b.bin	\
+	$(EVENT)\evcam04c.bin	\
+	$(EVENT)\ev11.bin		$(EVENT)\evcam11.bin	\
+	$(EVENT)\ev12.bin		$(EVENT)\evcam12.bin	\
+	$(EVENT)\ev13.bin		$(EVENT)\evcam13.bin	\
+	$(EVENT)\ev14.bin		$(EVENT)\evcam14.bin	\
+	$(EVENT)\ev15.bin		\
+	$(EVENT)\ev16.bin		\
+	$(EVENT)\ev17.bin		\
+	$(EVENT)\ev18.bin		\
+	$(EVENT)\ev19.bin		\
+	$(EVENT)\ev1a.bin		$(EVENT)\evcam1a.bin	\
+	$(EVENT)\ev20.bin		$(EVENT)\evcam20.bin	\
+	$(EVENT)\ev21.bin		$(EVENT)\evcam21.bin	\
+	$(EVENT)\ev22.bin		$(EVENT)\evcam22.bin	\
+	$(EVENT)\ev23.bin		$(EVENT)\evcam23.bin	\
+	$(EVENT)\ev24.bin		$(EVENT)\evcam24.bin	\
+	$(EVENT)\ev25.bin		\
+	$(EVENT)\ev26.bin		\
+	$(EVENT)\ev27.bin		\
+	$(EVENT)\ev28.bin		\
+	$(EVENT)\ev29.bin		\
+	$(EVENT)\ev2A.bin		\
+	$(EVENT)\ev30.bin		$(EVENT)\evcam30.bin	\
+	$(EVENT)\ev31.bin		$(EVENT)\evcam31.bin	\
+	$(EVENT)\ev32.bin		$(EVENT)\evcam32.bin	\
+	$(EVENT)\ev33.bin		$(EVENT)\evcam33.bin	\
+	$(EVENT)\ev34.bin		$(EVENT)\evcam34.bin	\
+	$(EVENT)\ev35.bin		\
+	$(EVENT)\ev36.bin		\
+	$(EVENT)\ev37.bin		\
+	$(EVENT)\ev40.bin		$(EVENT)\evcam40.bin	\
+	$(EVENT)\ev41.bin		$(EVENT)\evcam41.bin	\
+	$(EVENT)\ev42.bin		$(EVENT)\evcam42.bin	\
+	$(EVENT)\ev45.bin		$(EVENT)\evcam45.bin	\
+	$(EVENT)\ev44.bin		$(EVENT)\evcam44.bin	\
+	$(EVENT)\ev46.bin		$(EVENT)\evcam46.bin	\
+	$(EVENT)\ev51.bin		$(EVENT)\evcam51.bin	\
+	$(EVENT)\ev52.bin		$(EVENT)\evcam52.bin	\
+	$(EVENT)\ev53.bin		$(EVENT)\evcam53.bin	\
+	$(EVENT)\ev54.bin		$(EVENT)\evcam54.bin	\
+	$(EVENT)\ev55.bin		$(EVENT)\evcam55.bin	\
+	$(EVENT)\ev60.bin		$(EVENT)\evcam60.bin	\
+	$(EVENT)\ev61.bin		$(EVENT)\evcam61.bin	\
+	$(EVENT)\ev63.bin		$(EVENT)\evcam63.bin	\
+	$(EVENT)\ev64.bin		$(EVENT)\evcam64.bin	\
+	$(EVENT)\ev65.bin		\
+	$(EVENT)\ev66.bin		\
+	$(EVENT)\ev67.bin		\
+	$(EVENT)\ev68.bin		\
+	$(EVENT)\ev70.bin		$(EVENT)\evcam70.bin	\
+	$(EVENT)\ev71.bin		$(EVENT)\evcam71.bin	\
+	$(EVENT)\ev73.bin		$(EVENT)\evcam73.bin	\
+	$(EVENT)\ev74.bin		$(EVENT)\evcam74.bin	\
+	$(EVENT)\ev80.bin		$(EVENT)\evcam80.bin	\
+	$(EVENT)\ev81.bin		$(EVENT)\evcam81.bin	\
+	$(EVENT)\ev82.bin		$(EVENT)\evcam82.bin	\
+	$(EVENT)\ev83.bin		$(EVENT)\evcam83.bin	\
+	$(EVENT)\ev84.bin		$(EVENT)\evcam84.bin	\
+	$(EVENT)\ev85.bin		\
+	$(EVENT)\ev86.bin		\
+	$(EVENT)\ev87.bin		\
+	$(EVENT)\ev88.bin		\
+	$(EVENT)\ev89.bin		\
+	$(EVENT)\message.bin	$(EVENT)\mouth.bin		\
+	$(EVENT)\evchkpos.bin		\
+	$(EVENT)\woncam0.bin		$(EVENT)\woncam1.bin	\
+	$(EVENT)\woncam2.bin		$(EVENT)\woncam3.bin	\
+	$(EVENT)\woncam4.bin
+
+# test.tm2	デバッグ時用の入れ替え用	tgs_end0.tim tgs_end1.timはゲームショウ用です
+OPTION_DATA = \
+	$(OPTION)\option.bin	$(OPTION)\koei_end00.tim	$(OPTION)\koei_end01.tim	\
+	$(OPTION)\test.tm2	$(OPTION)\tgs_end0.tim	$(OPTION)\tgs_end1.tim
+
+MCARD_DATA = \
+	$(MCARD)\kessen.ico	$(MCARD)\gi.ico	$(MCARD)\go.ico	\
+	$(MCARD)\shoku.ico
+
+#いずれ1個のファイルに連結します
+ENDING_DATA = \
+	$(OPTION)\ending.bin	\
+	$(OPTION)\end_000.tm2	$(OPTION)\end_001.tm2	$(OPTION)\end_002.tm2	$(OPTION)\end_003.tm2	\
+	$(OPTION)\end_004.tm2	$(OPTION)\end_005.tm2	$(OPTION)\end_006.tm2	$(OPTION)\end_007.tm2
+
+# LINK #################################################################
+$(EXEDIR)\linkdata.bns	:	$(DATA_OBJ)	$(STAGE_DT)	$(SND_DATA)	$(ALGO_DATA)	\
+				$(MAP_DATA)	$(ETC_DATA)	$(ITEM_DATA)	$(MARK_DATA)	\
+				$(CSEL_DATA)	$(EFFECT_DATA)	$(EVENT_DATA)	$(OPTION_DATA)	\
+				$(MCARD_DATA)	$(ENDING_DATA)	data.mak
+	@echo "< $@ > Linking now ..."
+	$(TOOLM)\seclink -o$@ <<data.lnk$(**: =^)<<
+	copy /Y $*.h ..\hd
+	del $*.h
+	@echo "complete!"
+
+
+##################     end of file     ##################################
