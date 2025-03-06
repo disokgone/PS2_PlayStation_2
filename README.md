@@ -14,11 +14,17 @@ Some .REM files were remark text used in my MIPS R3000/R5000 disassembler.
 
 [Graph Test] Heximal dump from 0x420000 (length = 0x1000) to PS2 screen.
 
-[KeyBoard] A small keyboard interface via MCU 8051 to connect old DIN-5 PC keyboard to PS2 joypad slot-1, I wrote a debugger program to use keyboard to debug a PS2 program. The electric schematic file was for PROTEL use, not for KaiCAD !!
+[KeyBoard] A small keyboard interface via MCU 8051 to connect old DIN-5 PC keyboard to PS2 joypad slot-1, I wrote a debugger program to use keyboard to debug a PS2 program. The electric schematic file was for PROTEL use, not for KaiCAD !! (File date: 1999-Sep.)
 
-![Keyboard Interface via 8051 front view](Images/kBD_front.jpg "Front view")
+![Keyboard Interface via 8051 front view](Images/KBD_front.jpg "Front view")
 
-![Keyboard Interface via 8051 rear view](Images/kBD_back.jpg "Rear view")
+![Keyboard Interface via 8051 rear view](Images/KBD_back.jpg "Rear view")
+
+[Logic Analyzer] My old Logic Analyzer using SRAM from my retired 386-DX33 and it's max sampling rate was 40 MHz, but downloading data with an old PC DB-25 parallel port that download speed is about 35 Kbytes/sec. (Files are still under searching in my CDs)
+
+![My Logic Analyzer front view](Images/LA_front.jpg "Front view")
+
+![My Logic Analyzer via 8051 rear view](Images/LA_back.jpg "Rear view")
 
 [MemCard Test] Simple test exist or not of PS2 memory card and print result in text to computer.
 
