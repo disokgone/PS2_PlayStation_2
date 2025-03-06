@@ -16,9 +16,9 @@ Some .REM files were remark text used in my MIPS R3000/R5000 disassembler.
 
 [KeyBoard] A small keyboard interface via MCU 8051 to connect old DIN-5 PC keyboard to PS2 joypad slot-1, I wrote a debugger program to use keyboard to debug a PS2 program. The electric schematic file was for PROTEL use, not for KaiCAD !!
 
-![Keyboard Interface via 8051 front view](/KEYBOARD/kBD_front.jpg)
+![Keyboard Interface via 8051 front view](Images/kBD_front.jpg "Front view")
 
-![Keyboard Interface via 8051 rear view](/KEYBOARD/kBD_back.jpg)
+![Keyboard Interface via 8051 rear view](Images/kBD_back.jpg "Rear view")
 
 [MemCard Test] Simple test exist or not of PS2 memory card and print result in text to computer.
 
